@@ -1,0 +1,21 @@
+adminUser: admin
+adminPassword: Senha#123
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server.prometheus.svc.cluster.local
+        access: proxy
+        isDefault: true
+sidecar:
+  dashboards:
+    # To enable sidecar
+    enabled: true
+    # Label key that configMaps should have in order to be mounted 
+    label: grafana_dashboard
+    # Folder where the configMaps are mounted in Grafana container
+    folder: /tmp/dashboards
+    # To enable searching configMap accross all namespaces
+    searchNamespace: ALL
